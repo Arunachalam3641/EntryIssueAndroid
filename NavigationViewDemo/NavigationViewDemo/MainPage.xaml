@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NavigationViewDemo"
+             x:Class="NavigationViewDemo.MainPage">
+    <Grid RowDefinitions="*,Auto">
+        <local:NavigationView x:Name="navigationView" WidthRequest="200" BackgroundColor="LightGrey">
+            <ScrollView>
+                <VerticalStackLayout>
+                    <ListView x:Name="listView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HeightRequest="40">
+                                        <Label  Text="{Binding}" Padding="10,0,0,0" FontSize="16" TextColor="Black"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Entry Placeholder="Entry" BackgroundColor="Grey" TextColor="White"/>
+                </VerticalStackLayout>
+            </ScrollView>
+        </local:NavigationView>
+
+        <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25" Grid.Row="1" x:Name="MainView">
+            
+            <Button
+                x:Name="CounterBtn"
+                Text="Show NavigationView in right side" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="TransferInClicked"
+                HorizontalOptions="Fill" />
+        <Button Text="Hide NavigationView"
+                    Clicked="TransferOutClicked"/>
+            <Button Text="Show NavigationView in center"
+            Clicked="TransferTo0_Clicked"/>
+    </VerticalStackLayout>
+        </Grid>
+
+</ContentPage>
